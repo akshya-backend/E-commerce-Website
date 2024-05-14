@@ -1,4 +1,5 @@
 # 🛍️ Daily Need Store
+![Screenshot (5)](https://github.com/akshya-backend/E-commerce-Website/assets/142394538/57d3393d-6099-462e-911e-843b6590d422)
 
 ## Description
 
@@ -7,12 +8,24 @@ Welcome to our **E-commerce Website** – a sleek and modern online store built 
 ## 🌟 Features
 
 - **User Authentication**: Secure registration and login system.
-- **Profile **: Can Change Profile Info .
+- **User Profile**: Can Change Profile Info and change password  .
 - **Shopping Cart**: Add products to your cart and manage your selections.
 - **Checkout**: Fast and secure payment processing with Stripe.
 - **Order History**: Keep track of your orders.
+- **Invoice**:Invoice of orders through gmail.
 - **Image Uploads**: Upload product images with Cloudinary integration.
+## 💻 Technologies Used
 
+- **Frontend**: EJS (Embedded JavaScript templating)
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JSON Web Tokens (JWT), bcrypt
+- **Payment Processing**: Stripe
+- **File Uploads**: Multer, Cloudinary
+- **Email**: Nodemailer
+- **Environment Variables**: dotenv
+- **Form Validation**: Joi
+  
 ## 🛠️ Admin Tasks
 
 - **Product Management**: Easily add, update, or delete products.

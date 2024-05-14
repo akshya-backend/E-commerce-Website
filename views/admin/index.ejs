@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="/errorHandling.js"></script>
+
+</head>
+<body>
+   <!-- Main Navigation -->
+   <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <!-- Sidebar -->
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Back to Home</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li>
+                        <a href="/orderlists" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Pending Orders</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/getEditPage" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Edit Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/getCategory" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Add Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/getProduct" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline"> Add Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/getDeleteProduct" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Delete Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/getDeleteCategory" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Delete Category</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <!-- End Sidebar -->
+
+        <!-- Main Content -->
+        <div class="col-9" style="display: flex;align-items: center;text-align: center;">
+            <div class="container mt-3">
+                <!-- Your content here -->
+                <h1>Welcome to the Admin Panel</h1>
+                <p>This is the main content area.</p>
+            </div>
+        </div>
+        <!-- End Main Content -->
+    </div>
+</div>
+<!-- End Main Navigation -->
+<% if (typeof error !== 'undefined' && error) { %>
+    <script>
+        showErrorNotification('<%= error %>'); // Call showErrorNotification with error message
+    </script>
+<% } %>
+<% if (typeof success !== 'undefined' && success) { %>
+    <script>
+        showSuccessMssge('<%= success %>'); // Call showErrorNotification with error message
+    </script>
+<% } %>
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Opk8/1G9dhhy3mwK43r/gp0/5YGm3qAsqOxxs9iwbpYU0Rf1C5IT6enyn8g/K2KK" crossorigin="anonymous"></script>
+
+</script>
+</body>
+</html>

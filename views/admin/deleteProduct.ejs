@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="/errorHandling.js"></script>
+
+<body>
+  <form action="/postDeleteProduct" method="post">
+    <section class="vh-100 bg-image"
+    style="background-color: aliceblue;">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text text-center mb-5">Remove Product</h2>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" name="product_id" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3Example1cg">Product ID</label>
+                   </div>
+                   <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger ">Remove </button>
+                  </div>  
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <script>
+        showErrorNotification('<%= error %>'); // Call showErrorNotification with error message
+    </script>
+<% } %>
+<% if (typeof success !== 'undefined' && success) { %>
+    <script>
+        showSuccessMssge('<%= success %>'); // Call showErrorNotification with error message
+    </script>
+<% } %>
+</body>
+
+</html>

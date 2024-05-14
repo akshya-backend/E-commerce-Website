@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/css; charset=utf-8">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Main Project</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <nav  class="navbar">
+        <div  style="min-width: 100%;" class="container d-flex align-items-center justify-content-between">
+            <form  style="width: 50%;" class="search-form" action="/search" method="post">
+                <input class="search-input" type="text" placeholder="Search for products" name="productName" value="">
+                <button type="submit" style="background-color: white; border:none;" class="search-icon"><i class="fas fa-search"></i></button>
+            </form>
+            <a class="cart-icon" href="/getcart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="count" class="cart-item-count">
+                    <% if (isAuth) { %>
+                        <%= cartQTY %>
+                    <% } %>
+                </span>
+            </a>
+            <a  style="font-size:large;"class="contact-link" href="/contactUs"><i style="font-size: x-large;" class="fas fa-envelope"></i> Contact Us</a>
+            <% if (!isAuth) { %>
+                <a style="font-size: large; color: #d39e00;"  href="/login">
+                    Login / Sign Up
+                </a>
+            <% } else { %>
+                <div class="account-link">
+                    <i class="fas fa-user-circle account-icon" style="font-size: x-large;"></i>
+                    <a style="font-size: large;" href="/profile">My Account</a>
+                </div>
+            <% } %>
+            <% if (isAdmin) { %>
+                <a class="af" style="margin-bottom: 2px;" href="/admin">
+                    <i class="fa fa-cog" style="font-size: x-large;"></i>
+                     <span style="font-weight:bolder; font-size: large;">Admin</span>
+                </a>
+            <% } %>
+        </div>
+    </nav>
+    
+    <section class="banner_main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="text-bg">
+                        <h2><span class="blodark">DAILY NEED STORE</span></h2>
+                        <br><br>
+                        <p>A huge collection of Daily needs </p>
+                        <a class="read_more" href="#">Shop now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="ban_img">
+                        <figure><img src="/images/bestone.jpg" alt="#"></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner -->
+    <!-- Six_box section -->
+    <div class="six_box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx yellow_bg">
+                        <span>Flour</span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx bluedark_bg">
+                        <span>Snacks</span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx yellow_bg">
+                        <span>Bread</span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx bluedark_bg">
+                        <span>Beverages</span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx yellow_bg">
+                        <span>Rice</span>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 pa_left">
+                    <div class="six_probpx bluedark_bg">
+                        <span>Dairy Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="project" class="project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>Categories</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <%if (Category.length == 0) { %>
+                    <h1 style="display: block; text-align: center; width: 100%; font-family: 'Righteous', cursive; font-size: xxx-large; white-space: nowrap;">No categories yet Added</h1>
+               <% }else{ %>
+                <div class="product_main">
+                
+               <% Category.forEach((e) => { %>
+                     <div class="project_box zoom-container">
+                         <a href="/product/<%= e._id %>">
+                             <div class="dark_white_bg zoom-container">
+                                 <img src="<%= e.img %>">
+                             </div>
+                             <h3 class="cate" style="margin-bottom: 20px;"><%= e.category_type %></h3>
+                         </a>
+                     </div>
+                 <% }) %>
+                </div>
+
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

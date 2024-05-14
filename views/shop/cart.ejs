@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link  rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://js.stripe.com/v3/" preload></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex;align-items: center;justify-content: space-between;flex-direction: row;">
+              <a href="/" class="home-btn" style="display: inline-flex; align-items: center; padding: 10px 15px; background-color: #cc2121; color: white; text-decoration: none; border-radius: 5px; font-size: 16px; margin-bottom: 20px; transition: background-color 0.3s ease;">
+                <i class="fa fa-home" style="margin-right: 8px; font-size: larger;"></i> Home
+            </a>
+            <h1>Shopping Cart</h1>
+          <div></div>
+        </div>
+        <% if (user.cart.items.length === 0) { %>
+            <h1>No item in the cart</h1>
+        <% } else { %>
+            <form id="formMethod" >
+            <% user.cart.items.forEach((e) => { %>        
+                <div id="<%= e.productId._id %>" class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="<%=e.productId.image %>" alt="Product Image">
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title"><%= e.productId.product_name %></div>
+                        <div class="cart-item-price">₹<%= e.productId.product_price %></div>
+                        <div data="<%= e.productId._id %>" id="quantity" class="quantity">
+                            <div class=" decrement">-</div>
+                            <input type="number" value="<%= e.quantity %>" min="1" max="10">
+                            <div class="increment">+</div>
+                        </div>
+                        <div class="subtotal">₹<%= e.subtotal %></div>
+                        <div id="<%= e.productId._id %>" class="removeBtn">Remove</div>
+                    </div>
+                </div>
+            <% }) %> 
+            <div id="total" class="total">Total: ₹<%= user.cart.total_price %></div>
+
+            <div class="payment-methods">
+                <label for="paymentMethod">Select Payment Method:</label>
+                <select id="paymentMethod" required>
+                    <option value="cod" selected>Cash on Delivery</option>
+                    <option value="card">Card</option>
+                </select>
+            </div>
+            
+            <div id="cardDetailsContainer"> </div>
+            <input type="submit" id="checkoutBtn" class="checkout-btn" value="Checkout">
+
+        <% } %>
+        </form>
+    </div>
+    <script type="module" src="/script/cartHandle.js"></script>
+    
+</body>
+</html>

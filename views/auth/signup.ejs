@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/login.css">
+  <script src="/errorHandling.js"></script>
+  <title>signup page</title>
+</head>
+
+<body>
+  <section style="display: flex; justify-content: flex-end; ">
+    <form style="width: 80%; magrin-left:20%" action="/newRegistration" method="post">
+
+
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="firstName">Name</label>
+                    <input type="char" name="name" id="User Name" class="form-control form-control-lg" required>
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="lastName"> Phone Number</label>
+
+                    <input type="tel" name="telephone" id="PhoneNumber" class="form-control form-control-lg"
+                      pattern="[0-9]{10}" required title="Please enter valid Phone number" />
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="birthdayDate" class="form-label">Birthday</label>
+
+                    <input type="date" name="Dob" class="form-control form-control-lg" id="birthdayDate" required />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="Male" checked />
+                    <label class="form-check-label" for="femaleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="maleGender" value="Female" />
+                    <label class="form-check-label" for="maleGender">Female</label>
+                  </div>
+
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="emailAddress">Email</label>
+                    <input type="email" id="emailAddress" name="email" class="form-control form-control-lg" required />
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="password">Password</label>
+
+                    <input type="password" name="password"  minlength="6" class="form-control form-control-lg" required />
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <label class="form-label" for="address">Address</label>
+
+                  <input type="text" max="20" name="address" class="form-control form-control-lg" required />
+                </div>
+              </div>
+
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+  </section>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <script>
+        showErrorNotification('<%= error %>'); // Call showErrorNotification with error message
+    </script>
+<% } %>
+
+</body>
+
+</html>

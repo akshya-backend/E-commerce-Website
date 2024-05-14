@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Delivery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .container {
+    margin-top: 50px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .delivery-btn-container {
+    text-align: center;
+  }
+  .delivery-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .delivery-btn:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Order Lists</h2>
+  <table>
+    <tr>
+      <th>Order</th>
+      <th>Items</th>
+      <th>Payment Type</th>
+      <th>Total Price</th>
+      <th>Delivery Address</th>
+      <th>Contact Number</th>
+      <th>Order Timing</th>
+      <th>Action</th>
+    </tr>
+    <% order.forEach((e) => { %>
+    <tr id='<%= e._id  %>'>
+      <td><%= e._id  %></td>
+      <td>
+      <% e.items.forEach((item) => { %>
+      <%= item.productName %><br>
+       <!-- Display each product name -->
+     <% }) %>
+     </td>
+
+      <td><%= e.paymentType %></td>
+      <td><%=e.total_price  %></td>
+      <td><%=e.user.address  %></td>
+      <td><%= e.user.telephone  %></td>
+      <td><%= timestampToDOB(e.createdAt)  %></td>
+      <td><button data='<%= e._id  %>' class="delivery-btn">Deliver</button></td>
+    </tr>
+
+
+      <%}) %>
+    
+    <!-- Add more rows for additional orders -->
+  </table>
+</div>
+<% function timestampToDOB(timestamp) { %>
+    <% var date = new Date(timestamp); %>
+    <% var year = date.getFullYear(); %>
+    <% var month = ("0" + (date.getMonth() + 1)).slice(-2); %>
+    <% var day = ("0" + date.getDate()).slice(-2); %>
+    <% var dob = day + "-" + month + "-" + year; %>
+    <% return dob %>
+<% } %>
+</body>
+<script type="module"  src="/script/orderHandler.js"></script>
+</html>

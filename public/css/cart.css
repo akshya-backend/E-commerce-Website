@@ -1,0 +1,261 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.cart-item-image img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.cart-item-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex:1
+}
+
+.cart-item-title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    color: #B12704;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity input {
+    width: 30px;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.quantity button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.subtotal {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.total {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.checkout-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FF9900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.checkout-btn:hover {
+    background-color: #FFA833;
+}
+
+.removeBtn{
+    background-color: #d61d1d;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+    color:white ;
+    cursor:pointer; 
+    border:none
+  
+}
+  
+.cart-item {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.card-details {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.cart-item {
+    margin-bottom: 20px;
+    display: flex;
+}
+.cart-item-image img {
+    width: 100px;
+    height: 150px;
+}
+.cart-item-info {
+    margin-left: 20px;
+}
+.quantity {
+    margin-bottom: 10px;
+}
+.quantity button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+.subtotal {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.payment-methods {
+    margin-top: 20px;
+}
+#cardDetailsForm {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.checkout-btn {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.checkout-btn:hover {
+    background-color: #45a049;
+}
+/* Styling for select element */
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+/* Styling for checkout button when 'Cash on Delivery' selected */
+#paymentMethod[value="cod"] ~ .checkout-btn {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+#paymentMethod[value="cod"] ~ .checkout-btn:hover {
+    background-color: #0056b3;
+}
+#cardDetailsContainer{
+    margin-top: 40px;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    display: none;
+}
+.increment,
+.decrement {
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    min-width: 50px;
+    text-align: center;
+    background-color: transparent;
+    color: #4CAF50;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 5px;
+    text-align:center;
+}
+
+.increment:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.decrement:hover{
+    background-color: rgb(248, 87, 87);
+    color: white;
+}
+.removebtn{
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    min-width: 50px;
+    text-align: center;
+    background-color: transparent;
+    color: #4CAF50;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 5px;
+    text-align:center;
+}

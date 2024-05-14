@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>profile</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+  <div class="container">
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+        <div class="loading-text"> Sending...</div>
+    </div>
+    <div  id="main-body" class="main-body">
+      
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img  id="profilePic" src="<%= user.profilePic  %>" alt="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="150"/>
+                <div class="mt-3">
+                  <h4><%= user.name  %></h4>
+                  <button id="setPic" style="background: #ced4da;margin-right: 20px;margin-bottom: 20px;width: 100%;border: none;" type="submit" class="btn btn-primary">Set Profile Pic  </button>                  
+                  <div style="display:flex;justify-content: space-between;">
+                    <form  action="/logOut" method="get"> <button id="logoutbtn" style="margin-right: 20px;" type="submit" class="btn btn-primary">LOG OUT
+                      </button></form>
+                    <form action="/" method="get"> <button id="homebtn" type="submit" class="btn btn-outline-primary">Home</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <span id="name" class="editable" contenteditable="false"><%= user.name  %></span>
+                  <button class="btn btn-link edit-btn" data-field="name">Edit</button>                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Gender</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                 <%= user.gender  %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Phone</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <span id="telephone" class="editable phone" contenteditable="false"><%= user.telephone  %></span>
+                  <button id="phoneEditBtn" class="btn btn-link edit-btn" data-field="telephone">Edit</button>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Date Of Birth</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                <%=  timestampToDOB(user.Dob) %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= user.email  %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Address</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <span id="address" class="editable" contenteditable="false"><%= user.address  %></span>
+                  <button class="btn btn-link edit-btn" data-field="address">Edit</button>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3" style="width:1080px;">
+            <div class="container mt-5">
+              <div class="d-flex justify-content-center row">
+                <div class="col-md-10">
+                  <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="text-center">
+                              <div class="toggle-btn">
+                                <div class="inner-circle"></div>
+                              </div>
+                            </th>
+                            <th>Order</th>
+                            <th>Total</th>
+                            <th>Ordere -Timing</th>
+                            <th>status</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <% if (user.order.length == 0) { %>
+                            <h1 style="display: block; text-align: center; width: 100%; font-family: 'Righteous', cursive; font-size: xxx-large; white-space: nowrap;">No Order yet</h1>
+                        <% }else{%>
+                            <% user.order.forEach((e) => { %>                         
+                            <tbody class="table-body">
+                                <tr class="cell-1" id="<%= e.orderId._id  %>">
+                                  <td class="text-center">
+                                    <div class="toggle-btn">
+                                      <div class="inner-circle"></div>
+                                    </div>
+                                  </td>
+                                    <td><%= e.orderId._id  %></td>
+                                    <td><%= e.orderId.total_price  %></i></td>
+                                    <td><%= timestampToDOB(e.orderId.createdAt)%></td>
+                                    <td> <%= e.orderId.orderStatus  %></td>
+      
+                                  <TD></TD>
+                                  <td></td>
+                                  <td> 
+                                    <% if (e.orderId.orderStatus === "Pending") { %>
+                                       <button  id="cancelOrder" data="<%= e.orderId._id  %>" style="border-radius: 50px" class="btn btn-outline-danger btn-sm">Cancel Order</button>
+                                    <%  } else { %> 
+                                    <button id="invoice" data="<%= e.orderId._id  %>" style="border-radius: 50px" class="btn btn-outline-success btn-sm">Invoice</button>
+                                    <% } %>
+                                         
+                                  </td>
+                                </tr>
+                              </tbody>
+                              <%  }) %>
+                         <%  }  %>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Code injected by live-server -->
+  <% function timestampToDOB(timestamp) { %>
+    <% var date = new Date(timestamp); %>
+    <% var year = date.getFullYear(); %>
+    <% var month = ("0" + (date.getMonth() + 1)).slice(-2); %>
+    <% var day = ("0" + date.getDate()).slice(-2); %>
+    <% var dob = day + "-" + month + "-" + year; %>
+    <% return dob %>
+<% } %>
+
+<script  type="module" src="/script/profileHandler.js"></script>
+
+</body>
+
+</html>
